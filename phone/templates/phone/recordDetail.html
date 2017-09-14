@@ -1,0 +1,18 @@
+{% extends 'phone/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+		<div id="detaildiv">
+			{% if record.registertime %}
+				<img id="recorddetailimg" src="{% static 'picture/green-ok-icon.png' %}"><label id="h4label">{{ record.name }} {{ record.surname }}</label>
+				<div id="editicon">
+					<a class="btn btn-default" href="{% url 'recordEdit' pk=record.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+					<form action="{% url 'recordDelete' pk=record.pk %}" method="POST">{% csrf_token %}
+						<button id="deletebutton" type="submit"><span class="glyphicon glyphicon-remove"></span></button>
+					</form>
+				</div>
+				<p id="editnumberp">{{ record.phonenumber|linebreaks }}</p>
+				<p id="detailp">{{ record.registertime }}</p>
+			{% endif %}
+		</div><br>	
+{% endblock %}

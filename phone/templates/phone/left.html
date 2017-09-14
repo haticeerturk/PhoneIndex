@@ -1,0 +1,28 @@
+<form method="POST">
+	<label>Aranacak Kelimeyi Girin:</label><br>
+    <input id="search" type="text">
+    <input type="submit" class="btn btn-primary" id="kaydet" value="Kaydet" />
+</form>
+<div>
+	
+</div>
+
+{% block javascript %}
+  	<script>
+	    $("#search").change(function () {
+	      	var value = $(this).val();
+	      	alert(value);
+	      	$.ajax({
+	      		type: "GET",
+	        	url: "{% url 'recordSearch' %}",
+	        	data: {
+	        		'searchKey': value
+	        	},
+	        	success: function (data) {
+		          	alert(data);
+	        	}
+	      	});
+
+	    });
+  	</script>
+{% endblock %}

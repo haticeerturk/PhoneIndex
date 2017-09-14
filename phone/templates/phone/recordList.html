@@ -1,0 +1,11 @@
+{% extends 'phone/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+	{% for record in records %}
+		<div>
+			<img id="recordimg" src="{% static 'picture/green-ok-icon.png' %}"><label id="h4"><a href="{% url 'recordDetail' pk=record.pk %}">{{ record.name }} {{ record.surname }}</a></label>
+			<p>{{ record.phonenumber|linebreaks }}</p>
+		</div><br>
+	{% endfor %}
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends 'phone/base.html' %}
+
+{% block content %}
+	<div id="editdiv">
+		<label id="editlabel">Yeni Kayıt Ekleme</label>
+	    <form method="POST" id="editform">{% csrf_token %}
+	        {{ form.as_p }}
+	        <input type="submit" class="btn btn-primary" id="kaydet" value="Kaydet" />
+	    </form>
+	</div>
+{% endblock %}
